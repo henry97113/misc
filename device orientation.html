@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background-color: lightblue;
+      }
+
+      .box {
+        background-color: tomato;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+    </style>
+    <div class="box"><p></p></div>
+
+    <script>
+      const p = document.querySelector('p');
+
+      function handleOrientation(event) {
+        var absolute = event.absolute;
+        var alpha = Math.round(event.alpha);
+        var beta = Math.round(event.beta);
+        var gamma = Math.round(event.gamma);
+        p.innerHTML = `<p>Alpha: ${alpha},<br/> Beta: ${beta},<br/> Gamma: ${gamma}</p>`;
+
+        document.querySelector('.box').style.transform = `rotateZ(${alpha}deg)`;
+      }
+
+      window.addEventListener('deviceorientation', handleOrientation);
+    </script>
+  </body>
+</html>
